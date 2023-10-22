@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 public class ProjectGUI extends JFrame {
 
 	private JPanel contentPane;
+	private RandomPassword rp;
 
 	/**
 	 * Launch the application.
@@ -45,6 +48,8 @@ public class ProjectGUI extends JFrame {
 		setLocationRelativeTo(null);  // center the window
 
 		setContentPane(contentPane);
+		
+		rp = new RandomPassword();
 		
 		// to render the GUI components
 		addComponents();
@@ -115,6 +120,19 @@ public class ProjectGUI extends JFrame {
 		// generate button
 		JButton generateButton = new JButton("Generate Password");
 		generateButton.setBounds(155,487,182,41);
+		generateButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(lengthInput.getText().length() <= 0) 
+					return ;
+				boolean toggled = lowerCaseButton.isSelected() || upperCaseButton.isSelected() || numButton.isSelected() || symbolButton.isSelected();
+				if(toggled) {
+					String result = rp.generate(Integer.parseInt(lengthInput.getText()), upperCaseButton.isSelected(), lowerCaseButton.isSelected(), numButton.isSelected(), symbolButton.isSelected());
+					resultArea.setText(result);
+				}
+				
+			}
+		});
 		add(generateButton);
 		
 	}
