@@ -41,6 +41,7 @@ public class ProjectGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(214, 214, 214));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -94,28 +95,28 @@ public class ProjectGUI extends JFrame {
 		lengthInput.setFont(new Font("Eras Medium ITC",Font.PLAIN,20));
 		lengthInput.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		lengthInput.setBounds(280,275,192,39);
-		add(lengthInput);
+		getContentPane().add(lengthInput);
 		
 		
 		// button lowercase
 		JToggleButton lowerCaseButton = new JToggleButton("Lowercase");
 		lowerCaseButton.setBounds(25,337,225,56);
-		add(lowerCaseButton);
+		getContentPane().add(lowerCaseButton);
 		
 		// button uppercase
 		JToggleButton upperCaseButton = new JToggleButton("Uppercase");
 		upperCaseButton.setBounds(282,337,225,56);
-		add(upperCaseButton);
+		getContentPane().add(upperCaseButton);
 		
 		// number button
 		JToggleButton numButton = new JToggleButton("Number");
 		numButton.setBounds(25,408,225,56);
-		add(numButton);
+		getContentPane().add(numButton);
 		
 		// special symbol button
 		JToggleButton symbolButton = new JToggleButton("Symbol");
 		symbolButton.setBounds(282,408,225,56);
-		add(symbolButton); 
+		getContentPane().add(symbolButton); 
 		
 		// generate button
 		JButton generateButton = new JButton("Generate Password");
@@ -133,7 +134,7 @@ public class ProjectGUI extends JFrame {
 				
 			}
 		});
-		add(generateButton);
+		getContentPane().add(generateButton);
 		
 	}
 	

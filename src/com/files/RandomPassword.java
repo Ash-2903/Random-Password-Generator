@@ -30,6 +30,7 @@ public class RandomPassword {
 		if(sym)
 			validChars += sp_symbols;
 		
+		
 		for(int i=0;i<len;i++) {
 			char randomChar = validChars.charAt(random.nextInt(validChars.length()));
 			st.append(randomChar);
