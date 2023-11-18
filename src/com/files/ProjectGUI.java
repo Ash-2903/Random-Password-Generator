@@ -40,9 +40,10 @@ public class ProjectGUI extends JFrame {
 		super("Random Password Generator");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 600);
+		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(38, 38, 38));
+		contentPane.setForeground(new Color(192, 192, 192));
+		contentPane.setBackground(new Color(218, 218, 218));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -64,36 +65,37 @@ public class ProjectGUI extends JFrame {
 		
 		// Title of the panel
 		JLabel title = new JLabel("Random Password Generator");
-		title.setForeground(new Color(196, 225, 255));
-		title.setFont(new Font("Eras Bold ITC", Font.BOLD, 32));
+		title.setForeground(new Color(128, 0, 0));
+		title.setFont(new Font("Eras Bold ITC", Font.BOLD | Font.ITALIC, 32));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setBounds(0,24,540,39);
+		title.setBounds(196,25,540,39);
 		getContentPane().add(title);
+		JScrollPane resultPane = new JScrollPane(); // scrollability when password is too big
+		resultPane.setBounds(115, 356, 318, 60);
+		resultPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		getContentPane().add(resultPane);
 		
 		// Text area where the password is displayed
 		JTextArea resultArea = new JTextArea();
+		resultPane.setViewportView(resultArea);
 		resultArea.setForeground(new Color(255, 255, 255));
 		resultArea.setBackground(new Color(128, 128, 128));
 		resultArea.setEditable(false);
 		resultArea.setFont(new Font("Eras Medium ITC",Font.BOLD,26));
-		JScrollPane resultPane = new JScrollPane(resultArea); // scrollability when password is too big
-		resultPane.setBounds(25, 97, 479, 60);
-		resultPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		getContentPane().add(resultPane);
 		
 		// select criteria heading
-		JLabel subHeader = new JLabel("Select your criterias");
-		subHeader.setForeground(new Color(255, 255, 193));
+		JLabel subHeader = new JLabel("Criterias :");
+		subHeader.setForeground(new Color(255, 128, 128));
 		subHeader.setFont(new Font("Eras Demi ITC", Font.PLAIN, 24));
 		subHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		subHeader.setBounds(10, 197, 516, 70);
+		subHeader.setBounds(610, 107, 290, 70);
 		getContentPane().add(subHeader);
 		
 		// password length label
-		JLabel length = new JLabel("Enter Password Length");
-		length.setForeground(new Color(192, 192, 192));
+		JLabel length = new JLabel("Password Length");
+		length.setForeground(new Color(128, 128, 128));
 		length.setFont(new Font("Eras Medium ITC",Font.PLAIN,20));
-		length.setBounds(55,275,272,39);
+		length.setBounds(550,187,163,39);
 		getContentPane().add(length);
 		
 		// password length input 
@@ -101,38 +103,34 @@ public class ProjectGUI extends JFrame {
 		lengthInput.setBackground(new Color(192, 192, 192));
 		lengthInput.setFont(new Font("Eras Medium ITC",Font.PLAIN,20));
 		lengthInput.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		lengthInput.setBounds(280,275,192,39);
+		lengthInput.setBounds(739,187,192,39);
 		getContentPane().add(lengthInput);
 		
 		
 		// button lowercase
 		JToggleButton lowerCaseButton = new JToggleButton("Lowercase");
-		lowerCaseButton.setBackground(new Color(255, 255, 193));
-		lowerCaseButton.setBounds(25,337,225,56);
+		lowerCaseButton.setBounds(637,274,225,56);
 		getContentPane().add(lowerCaseButton);
 		
 		// button uppercase
 		JToggleButton upperCaseButton = new JToggleButton("Uppercase");
-		upperCaseButton.setBackground(new Color(255, 255, 193));
-		upperCaseButton.setBounds(282,337,225,56);
+		upperCaseButton.setBounds(637,373,225,56);
 		getContentPane().add(upperCaseButton);
 		
 		// number button
 		JToggleButton numButton = new JToggleButton("Number");
-		numButton.setBackground(new Color(255, 255, 193));
-		numButton.setBounds(25,408,225,56);
+		numButton.setBounds(637,462,225,56);
 		getContentPane().add(numButton);
 		
 		// special symbol button
 		JToggleButton symbolButton = new JToggleButton("Symbol");
-		symbolButton.setBackground(new Color(255, 255, 193));
-		symbolButton.setBounds(282,408,225,56);
+		symbolButton.setBounds(637,546,225,56);
 		getContentPane().add(symbolButton); 
 		
 		// generate button
 		JButton generateButton = new JButton("Generate Password");
-		generateButton.setBackground(new Color(194, 255, 134));
-		generateButton.setBounds(155,487,182,41);
+		generateButton.setBackground(new Color(0, 255, 0));
+		generateButton.setBounds(373,664,182,41);
 		generateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -148,9 +146,8 @@ public class ProjectGUI extends JFrame {
 		});
 		getContentPane().add(generateButton);
 		
-		JButton clearButton = new JButton("Clear");
-		clearButton.setBackground(new Color(255, 128, 128));
-		clearButton.setBounds(441, 532, 85, 21);
+		JButton clearButton = new JButton("clear selection");
+		clearButton.setBounds(827, 715, 126, 21);
 		clearButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -166,6 +163,12 @@ public class ProjectGUI extends JFrame {
 			}
 		});
 		contentPane.add(clearButton);
+		
+		JLabel pwdLabel = new JLabel("Password");
+		pwdLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		pwdLabel.setForeground(new Color(128, 128, 128));
+		pwdLabel.setBounds(237, 306, 96, 39);
+		contentPane.add(pwdLabel);
 		
 	}
 }
